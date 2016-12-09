@@ -1,0 +1,22 @@
+{
+    "name": "SachaMorard/phalcon-model-annotations",
+    "type": "library",
+    "description": "Annotations handler for phalcon models",
+    "license": "MIT",
+    "keywords": [
+        "phalcon",
+        "model",
+        "annotation"
+    ],
+    "require": {
+        "php": ">=5.5",
+        "ext-phalcon": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phalcon\\": [
+                "Library/Phalcon/"
+            ]
+        }
+    }
+}
