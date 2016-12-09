@@ -1,5 +1,5 @@
 {
-    "name": "SachaMorard/phalcon-model-annotations",
+    "name": "sachoo/phalcon-model-annotations",
     "type": "library",
     "description": "Annotations handler for phalcon models",
     "license": "MIT",
