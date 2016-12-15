@@ -1,7 +1,7 @@
 {
     "name": "sachoo/phalcon-model-annotations",
     "type": "library",
-    "description": "Annotations handler for phalcon models",
+    "description": "Annotations handler for phalcon models. Allow to add foreign keys with annotation in models and manage many models with different databases (mysql, postgresql, cassandra, sqlite)",
     "license": "MIT",
     "keywords": [
         "phalcon",
