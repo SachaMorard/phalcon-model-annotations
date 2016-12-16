@@ -1,4 +1,5 @@
-# phalcon-model-annotations
+# Phalcon Model Annotations
+
 Annotations handler for phalcon models
 
-This component is very useful to pimp phalcon annotation for models.
+This component is very useful to pimp phalcon model annotations.
