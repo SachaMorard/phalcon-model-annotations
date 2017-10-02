@@ -81,6 +81,11 @@ class SqlDatabases
                             $dataTypesBind[$columnName] = Column::BIND_PARAM_DECIMAL;
                             $numericTypes[$columnName] = true;
                             break;
+                        case 'float':
+                            $dataTypes[$columnName] = Column::TYPE_FLOAT;
+                            $dataTypesBind[$columnName] = Column::BIND_PARAM_DECIMAL;
+                            $numericTypes[$columnName] = true;
+                            break;
                         case 'date':
                             $dataTypes[$columnName] = Column::TYPE_DATE;
                             $dataTypesBind[$columnName] = Column::BIND_PARAM_STR;
