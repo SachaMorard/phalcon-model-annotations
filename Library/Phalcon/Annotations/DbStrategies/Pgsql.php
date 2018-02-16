@@ -10,6 +10,6 @@
 
 namespace Phalcon\Annotations\DbStrategies;
 
-class Postgresql extends SqlDatabases
+class Pgsql extends SqlDatabases
 {
 }

@@ -18,8 +18,8 @@ use Phalcon\Mvc\Model\MetaData\StrategyInterface;
 
 class ModelStrategy implements StrategyInterface
 {
-    const METADATA_SIZES_OF_FIELDS = 13;
-    const METADATA_TABLE_INDEXES = 14;
+    const METADATA_SIZES_OF_FIELDS = 100;
+    const METADATA_TABLE_INDEXES = 101;
 
     /**
      * Initializes the model's meta-data

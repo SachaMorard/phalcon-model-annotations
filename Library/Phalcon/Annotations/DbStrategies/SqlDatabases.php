@@ -34,6 +34,17 @@ class SqlDatabases
         $nonPrimaryKeys = array();
         $sizes = array();
 
+        $source = null;
+        $annotations = $reflection->getClassAnnotations();
+        if ($annotations) {
+            foreach ($annotations as $annotation) {
+                switch ($annotation->getName()) {
+                    case 'Source':
+                        $arguments = $annotation->getArguments();
+                        $source = $arguments[0];
+                }
+            }
+        }
         $identity = false;
         foreach ($properties as $name => $collection) {
             if ($collection->has('Column')) {
@@ -57,9 +68,18 @@ class SqlDatabases
                             $dataTypesBind[$columnName] = Column::BIND_PARAM_INT;
                             $numericTypes[$columnName] = true;
 
-                            if (!isset($arguments['size'])) {
+                            if ($source !== 'dbPostgresql' && !isset($arguments['size'])) {
                                 $arguments['size'] = 11;
                             }
+                            break;
+                        case 'bigint':
+                            $dataTypes[$columnName] = Column::TYPE_BIGINTEGER;
+                            $dataTypesBind[$columnName] = Column::BIND_PARAM_INT;
+                            $numericTypes[$columnName] = true;
+                            break;
+                        case 'timestamp':
+                            $dataTypes[$columnName] = Column::TYPE_TIMESTAMP;
+                            $dataTypesBind[$columnName] = Column::BIND_PARAM_STR;
                             break;
                         case 'string':
                             $dataTypes[$columnName] = Column::TYPE_VARCHAR;
@@ -93,6 +113,18 @@ class SqlDatabases
                         case 'boolean':
                             $dataTypes[$columnName] = Column::TYPE_BOOLEAN;
                             $dataTypesBind[$columnName] = Column::BIND_PARAM_BOOL;
+                            break;
+                        case 'json':
+                            $dataTypes[$columnName] = Column::TYPE_JSON;
+                            $dataTypesBind[$columnName] = Column::BIND_PARAM_STR;
+                            break;
+                        case 'jsonb':
+                            $dataTypes[$columnName] = Column::TYPE_JSONB;
+                            $dataTypesBind[$columnName] = Column::BIND_PARAM_STR;
+                            break;
+                        case 'array':
+                            $dataTypes[$columnName] = 100; //todo replace with Column::TYPE_ARRAY asap
+                            $dataTypesBind[$columnName] = Column::BIND_PARAM_STR;
                             break;
                     }
                 } else {
